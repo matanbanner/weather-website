@@ -6,7 +6,7 @@ const forecast = require('../utils/forecast')
 
 
 const app = express()
-const port = process.env.PORT || 30
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -23,21 +23,21 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('/', (req, res) => {
     res.render('index', {
-        title: 'weather',
+        title: 'Weather',
         name: 'Matan Banner'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About me',
+        title: 'About Me',
         name: 'Matan Banner'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'help',
+        title: 'Help',
         name: 'Matan Banner',
         message: 'Help me!'
     })
@@ -69,6 +69,14 @@ app.get('/weather', (req, res) => {
                 address
             })
         })
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Matan Banner',
+        errorMessage: 'Page not found'
     })
 })
 
