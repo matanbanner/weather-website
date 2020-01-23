@@ -8,7 +8,6 @@ const forecast = (latitude, longtitude, callback) => {
         } else if (error) {
             callback('Unable to find locations', undefined)
         } else {
-            console.log(daily)
             const forecastData = `
                 ${daily.data[0].summary} It is currently ${temperature} degrees out.
                 There is a ${precipProbability * 100}% chance of rain.
